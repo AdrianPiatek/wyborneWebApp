@@ -1,8 +1,11 @@
-package com.example.wyborne.restaurant;
+package com.example.wyborne.controller;
 
 
+import com.example.wyborne.restaurant.Place;
+import com.example.wyborne.restaurant.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +27,8 @@ public class PlaceController {
     }
 
     @PostMapping
-    public void addPlace(@RequestBody Place place) {
+    public void addPlace(@RequestBody @Validated Place place) {
         placeService.addPlace(place);
     }
 
-    @GetMapping("/test")
-    public String test() {
-        return "test";
-    }
 }
