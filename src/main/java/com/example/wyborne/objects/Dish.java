@@ -1,9 +1,16 @@
 package com.example.wyborne.objects;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
 @Table
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Dish {
 
     @Id
@@ -23,35 +30,8 @@ public class Dish {
     private String description;
 
 
-    public Dish(Long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
     public Dish(String name, String description) {
         this.name = name;
-        this.description = description;
-    }
-    public Dish() {
-
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
         this.description = description;
     }
 }
