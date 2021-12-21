@@ -6,20 +6,10 @@
 </head>
 <body>
     <h1>Restaurants</h1>
-    <div>
-        <div>Sleeping Queen</div>
-        <div>Dwarves' favorite dishes</div>
-        <a href="#">check out</a>
-    </div>
-    <div>
-        <div>Sleeping Queen</div>
-        <div>Dwarves' favorite dishes</div>
-        <a href="#">check out</a>
-    </div>
-    <div>
-        <div>Sleeping Queen</div>
-        <div>Dwarves' favorite dishes</div>
-        <a href="#">check out</a>
+    <div th:each="place : ${placeList}">
+        <div th:text="${place.getName()}"></div>
+        <div th:text="${place.getDescription()}"></div>
+        <a th:href="@{'/menu/'+${place.getId()}}">check out</a>
     </div>
 </body>
 </html>

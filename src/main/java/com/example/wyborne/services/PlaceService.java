@@ -17,6 +17,10 @@ public class PlaceService {
         return placeRepository.findAll();
     }
 
+    public Place getPlaceById(Long id) {
+        return placeRepository.getById(id);
+    }
+
     public void addPlace(Place place) {
         placeRepository.save(place);
     }
