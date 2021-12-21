@@ -1,4 +1,4 @@
-package com.example.wyborne.restaurant;
+package com.example.wyborne.objects;
 
 import lombok.*;
 

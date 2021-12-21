@@ -1,7 +1,8 @@
-package com.example.wyborne.restaurant;
+package com.example.wyborne.services;
 
+import com.example.wyborne.objects.Place;
+import com.example.wyborne.repositories.PlaceRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

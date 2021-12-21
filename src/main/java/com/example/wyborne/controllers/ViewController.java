@@ -1,4 +1,4 @@
-package com.example.wyborne.controller;
+package com.example.wyborne.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

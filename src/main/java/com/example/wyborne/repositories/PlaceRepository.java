@@ -1,5 +1,6 @@
-package com.example.wyborne.restaurant;
+package com.example.wyborne.repositories;
 
+import com.example.wyborne.objects.Place;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

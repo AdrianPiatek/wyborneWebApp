@@ -1,4 +1,4 @@
-package com.example.wyborne.dish;
+package com.example.wyborne.objects;
 
 import javax.persistence.*;
 

@@ -1,10 +1,9 @@
-package com.example.wyborne.controller;
+package com.example.wyborne.controllers;
 
 
-import com.example.wyborne.restaurant.Place;
-import com.example.wyborne.restaurant.PlaceService;
+import com.example.wyborne.objects.Place;
+import com.example.wyborne.services.PlaceService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
