@@ -3,6 +3,7 @@ package com.example.wyborne.controller;
 
 import com.example.wyborne.restaurant.Place;
 import com.example.wyborne.restaurant.PlaceService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -12,14 +13,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path = "/restaurants")
+@AllArgsConstructor
 public class PlaceController {
 
     private final PlaceService placeService;
-
-    @Autowired
-    public PlaceController(PlaceService placeService) {
-        this.placeService = placeService;
-    }
 
     @GetMapping
     public List<Place> getPlace() {
