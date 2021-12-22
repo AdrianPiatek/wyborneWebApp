@@ -1,5 +1,6 @@
 package com.example.wyborne.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -34,4 +34,8 @@ public class Dish {
         this.name = name;
         this.description = description;
     }
+
+    @JsonIgnore
+    @ManyToOne
+    Place place;
 }
