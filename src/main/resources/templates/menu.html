@@ -3,9 +3,15 @@
 <head>
     <title>home page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script th:src="@{/script/add-to-cart.js}" async></script>
 </head>
 <body>
     <div th:text="${place.getName()}"></div>
     <div th:text="${place.getDescription()}"></div>
+    <div th:each="dish : ${place.getDishList()}" th:data-dish-id="${dish.getId()}">
+        <div th:text="${dish.getName()}" th:class="dish-name"></div>
+        <div th:text="${dish.getDescription()}" th:class="dish-des"></div>
+        <button th:class="add-button">add to cart</button>
+    </div>
 </body>
 </html>

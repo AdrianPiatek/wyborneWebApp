@@ -19,16 +19,21 @@ public class ViewController {
     }
 
     @GetMapping("/home")
-    public String getHomeView(Model model){
+    public String getHomeView(Model model) {
         List<Place> placeList = placeService.getPlace();
         model.addAttribute("placeList", placeList);
         return "home";
     }
 
     @GetMapping("/menu/{id}")
-    public String getResMenu(Model model, @PathVariable("id") Long id){
+    public String getResMenu(Model model, @PathVariable("id") Long id) {
         Place place = placeService.getPlaceById(id);
         model.addAttribute("place", place);
         return "menu";
+    }
+
+    @GetMapping("/order")
+    public String order() {
+        return "cart";
     }
 }

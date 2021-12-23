@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Wyborne cart</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script th:src="@{/script/order.js}" async></script>
+</head>
+<body>
+    <h1>Order</h1>
+    <div th:class="cart"></div>
+    <button th:class="orderButton">order</button>
+</body>
+</html>
