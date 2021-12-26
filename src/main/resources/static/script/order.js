@@ -27,15 +27,21 @@ function generate() {
 }
 
 function sendOrder() {
-    let cart = localStorage.getItem("cart")
+    let cart = JSON.parse(localStorage.getItem("cart"))
+    let form = document.getElementById("cartForm")
     let xhr = new XMLHttpRequest()
     xhr.open("GET", "restaurants")
     xhr.setRequestHeader("Accept", "application/json");
-
+    let id = cart.map(x => {return x.id})
+    let order = {
+        "dishes" : id,
+        "name" : "yes",
+        "email" : "test"
+    }
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-            console.log(xhr.status);
-            console.log(xhr.responseText);
+            console.log(order)
+            //location.href = "home"
         }};
 
     xhr.send(null)
