@@ -4,14 +4,41 @@
     <title>home page</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script th:src="@{/script/add-to-cart.js}" async></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <style th:inline="text">
+        .background{
+            filter: blur(4px);
+            background: url('https://images.pexels.com/photos/416471/pexels-photo-416471.jpeg') no-repeat;
+            background-size: auto;
+            width: 100%;
+            height: 100%;
+            z-index: -1;}
+    </style>
 </head>
 <body>
-    <div th:text="${place.getName()}"></div>
-    <div th:text="${place.getDescription()}"></div>
-    <div th:each="dish : ${place.getDishList()}" th:data-dish-id="${dish.getId()}">
-        <div th:text="${dish.getName()}" th:class="dish-name"></div>
-        <div th:text="${dish.getDescription()}" th:class="dish-des"></div>
-        <button th:class="add-button">add to cart</button>
+    <div class="position-absolute background"></div>
+    <div class="container pt-3">
+        <div class="d-flex align-items-center">
+            <h1 th:text="${place.getName()}"></h1>
+            <a th:href="@{/home}" class="bi bi-house link-dark ms-3 fs-3"></a>
+            <a th:href="@{/order}" class="bi bi-cart link-dark ms-3 fs-3"></a>
+        </div>
+        <div class="container" >
+            <h5 th:text="${place.getDescription()}"></h5>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="d-flex flex-column">
+                <div th:each="dish : ${place.getDishList()}" class="card mb-2" style="width: 25rem;">
+                    <div class="card-body" th:data-dish-id="${dish.getId()}">
+                        <h5 th:text="${dish.getName()}" class="dish-name card-title"></h5>
+                        <p th:text="${dish.getDescription()}" class="dish-des card-text"></p>
+                        <button class="add-button btn btn-primary">add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

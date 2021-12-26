@@ -4,10 +4,38 @@
     <title>Wyborne cart</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script th:src="@{/script/order.js}" async></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <style th:inline="text">
+        .background{
+            filter: blur(4px);
+            background: url('https://images.pexels.com/photos/416471/pexels-photo-416471.jpeg') no-repeat;
+            background-size: auto;
+            width: 100%;
+            height: 100%;
+            z-index: -1;}
+    </style>
 </head>
 <body>
-    <h1>Order</h1>
-    <div th:class="cart"></div>
-    <button th:class="orderButton">order</button>
+    <div class="position-absolute background"></div>
+    <div class="container">
+        <div class="d-flex align-items-center pt-3">
+            <h1>Order</h1>
+            <a th:href="@{/home}" class="bi bi-house link-dark ms-3 fs-3"></a>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="d-flex flex-column">
+                <div class="cart"></div>
+                <form th:id="cartForm">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-control mb-2">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control mb-2">
+                </form>
+                <button onclick="sendOrder()" class="btn btn-primary mt-2">order</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

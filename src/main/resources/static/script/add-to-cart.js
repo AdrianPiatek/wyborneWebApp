@@ -20,6 +20,7 @@ function addToCart(event) {
         "description" : dishHtml.getElementsByClassName("dish-des")[0].textContent
     }
     let cart = localStorage.getItem("cart")
+    console.log(cart)
     if (cart == null){
         cart = []
     } else {

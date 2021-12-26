@@ -16,9 +16,27 @@ function generate() {
         let cartItem = document.createElement("div")
         cartItem.dataset.dishId = items[i].id
         cartItem.innerHTML = `
-            <div>${items[i].name}</div>
-            <div>${items[i].description}</div>`
+            <div class="card mb-2" style="width: 25rem;">
+                <div class="card-body">
+                    <h5 class="card-title">${items[i].name}</h5>
+                    <p class="card-text">${items[i].description}</p>
+                </div>
+            </div>`
         cart.append(cartItem)
     }
+}
 
+function sendOrder() {
+    let cart = localStorage.getItem("cart")
+    let xhr = new XMLHttpRequest()
+    xhr.open("GET", "restaurants")
+    xhr.setRequestHeader("Accept", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+        }};
+
+    xhr.send(null)
 }
