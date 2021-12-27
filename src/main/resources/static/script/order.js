@@ -52,7 +52,7 @@ function sendOrder() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             localStorage.removeItem("cart")
-            //location.href = "home"
+            location.href = "home"
         }};
     if(cart.length === 0){
         alert("Cart is empty")
