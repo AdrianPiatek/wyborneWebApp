@@ -27,22 +27,38 @@ function generate() {
 }
 
 function sendOrder() {
-    let cart = JSON.parse(localStorage.getItem("cart"))
-    let form = document.getElementById("cartForm")
+    let cart = localStorage.getItem("cart")
+
+    if(cart == null) {
+        cart = []
+    } else {
+        cart = JSON.parse(cart)
+    }
+
     let xhr = new XMLHttpRequest()
-    xhr.open("GET", "restaurants")
+    xhr.open("POST", "order")
     xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
     let id = cart.map(x => {return x.id})
+    let name = document.getElementById("name").value
+    let email = document.getElementById("email").value
+
     let order = {
         "dishes" : id,
-        "name" : "yes",
-        "email" : "test"
+        "name" : name,
+        "email" : email
     }
+
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-            console.log(order)
+            localStorage.removeItem("cart")
             //location.href = "home"
         }};
-
-    xhr.send(null)
+    if(cart.length === 0){
+        alert("Cart is empty")
+    } else if (name === null || email === null) {
+        alert("complete the form")
+    }  else {
+        xhr.send(JSON.stringify(order))
+    }
 }
