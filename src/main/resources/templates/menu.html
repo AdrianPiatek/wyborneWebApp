@@ -34,6 +34,10 @@
                     <div class="card-body" th:data-dish-id="${dish.getId()}">
                         <h5 th:text="${dish.getName()}" class="dish-name card-title"></h5>
                         <p th:text="${dish.getDescription()}" class="dish-des card-text"></p>
+                        <div class="d-flex">
+                            <div th:text="${dish.getPrice()}" class="dish-price card-text"></div>
+                            <div>zł</div>
+                        </div>
                         <button class="add-button btn btn-primary">add to cart</button>
                     </div>
                 </div>

@@ -15,9 +15,10 @@ function addButtonListener() {
 function addToCart(event) {
     let dishHtml = event.target.parentElement
     let dish = {
-        "id" : dishHtml.dataset.dishId,
+        "id" : Number(dishHtml.dataset.dishId),
         "name" : dishHtml.getElementsByClassName("dish-name")[0].textContent,
-        "description" : dishHtml.getElementsByClassName("dish-des")[0].textContent
+        "description" : dishHtml.getElementsByClassName("dish-des")[0].textContent,
+        "price" : Number(dishHtml.getElementsByClassName("dish-price")[0].textContent)
     }
     let cart = localStorage.getItem("cart")
     console.log(cart)

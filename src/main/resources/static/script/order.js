@@ -12,7 +12,9 @@ function generate() {
     } else {
         items = JSON.parse(items)
     }
+    let sum = 0
     for(let i=0; i<items.length; i++) {
+        sum += items[i].price
         let cartItem = document.createElement("div")
         cartItem.dataset.dishId = items[i].id
         cartItem.innerHTML = `
@@ -20,10 +22,14 @@ function generate() {
                 <div class="card-body">
                     <h5 class="card-title">${items[i].name}</h5>
                     <p class="card-text">${items[i].description}</p>
+                    <p class="card-text">${items[i].price + 'zł'}</p>
                 </div>
             </div>`
         cart.append(cartItem)
     }
+
+    let price = document.getElementById("price")
+    price.innerText = 'Price: ' + sum + 'zł'
 }
 
 function sendOrder() {
