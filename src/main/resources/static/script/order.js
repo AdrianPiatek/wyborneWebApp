@@ -19,12 +19,14 @@ function generate() {
         cartItem.dataset.dishId = items[i].id
         cartItem.innerHTML = `
             <div class="card mb-2" style="width: 25rem;">
-                <div class="card-body">
+                <div class="card-body" data-dish-id="${items[i].id}">
                     <h5 class="card-title">${items[i].name}</h5>
                     <p class="card-text">${items[i].description}</p>
-                    <p class="card-text">${items[i].price + 'zł'}</p>
+                    <div>${items[i].price + 'zł'}</div>
+                    <button class="btn btn-primary">remove</button>
                 </div>
             </div>`
+        cartItem.getElementsByClassName("btn")[0].addEventListener("click", remove)
         cart.append(cartItem)
     }
 
@@ -62,9 +64,28 @@ function sendOrder() {
         }};
     if(cart.length === 0){
         alert("Cart is empty")
-    } else if (name === null || email === null) {
+    } else if (name === '' || email === '') {
         alert("complete the form")
     }  else {
         xhr.send(JSON.stringify(order))
     }
+}
+
+function remove(event) {
+    let dish = event.target.parentElement
+    let dishId = Number(dish.dataset.dishId)
+    let cart = localStorage.getItem("cart")
+    if(cart == null) {
+        cart = []
+    } else {
+        cart = JSON.parse(cart)
+    }
+    for(let i=0; i<cart.length; i++) {
+        if (cart[i].id === dishId) {
+            cart.splice(i, 1)
+        }
+    }
+    console.log(cart)
+    localStorage.setItem('cart', JSON.stringify(cart))
+    location.reload()
 }
